@@ -77,7 +77,7 @@ func findSymbolDefinition(ctx *CompilerContext, pos lsp.Position) (*ASTNode, *Sy
     }
 
     if len(viable) == 0 {
-        return nil, nil
+        return containingNode, nil
     }
 
     // find the declaration scope for each viable symbol
@@ -95,7 +95,7 @@ func findSymbolDefinition(ctx *CompilerContext, pos lsp.Position) (*ASTNode, *Sy
     }
 
     if len(symbolsWithScope) == 0 {
-        return nil, nil
+        return containingNode, nil
     }
 
     // select the symbol with the highest declaration scope (innermost)
